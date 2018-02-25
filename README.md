@@ -28,13 +28,13 @@ which is what the html pages are set up to expect.
 You can then open `www/*.html` in a browser (no need for a web server, just
 double click the files) to view the demos. Available demos;
 
- * [`eyes.html`](blob/master/www/eyes.html): Displays a set of blinking eyes.
+ * [`eyes.html`](www/eyes.html): Displays a set of blinking eyes.
    The gaze direction can be controlled from ROS by publishing a
    `geometry_msgs/Point` to "/gaze_direction" (the z value is ignored). If the
-   [`gaze_publisher.py`](blob/master/scripts/gaze_publisher.py) script is
+   [`gaze_publisher.py`](scripts/gaze_publisher.py) script is
    running, you should see MOVO rolling his eyes at you continuously.
 
- * [`star_rating.html`](blob/master/www/star_rating.html): Gives the user 5
+ * [`star_rating.html`](www/star_rating.html): Gives the user 5
    star-rating buttons to provide feedback on the robot's behaviour. Publishes
    `sts_msgs/Float32` to "/star_rating". You can check it is working by
    running `rostopic echo /star_rating`. Intelligent robot learning and
