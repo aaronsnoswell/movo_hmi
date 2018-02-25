@@ -65,7 +65,7 @@
         status_text.innerHTML = "Connecting to ROSBridge server...";
 
         ros.on('connection', function() {
-            status_text.innerHTML = "Connected to ROSBridge server. Listening on /gaze_point";
+            status_text.innerHTML = "Connected to ROSBridge server. Publishing on /star_rating";
         });
 
         ros.on('error', function(error) {
@@ -75,6 +75,57 @@
         ros.on('close', function() {
             status_text.innerHTML = "Connection to ROSBridge server closed.";
         });
+
+        /**
+         * Define Float32 message type
+         */
+        class Float32 extends ROSLIB.Message {
+            constructor(data) {
+                super({
+                    data: Math.fround(data)
+                });
+            }
+        }
+
+        Float32.messageType = 'std_msgs/Float32';
+
+        var publisher = new ROSLIB.Topic({
+            ros : ros,
+            name : '/star_rating',
+            messageType : 'std_msgs/Float32'
+        });
+        publisher.advertise();
+
+        // Star rating code below
+        document.getElementById("star-1").onclick = function() {
+            value = 1;
+            publisher.publish(new Float32(value));
+            status_text.innerHTML = "/star_rating: Sent message " + value;
+        }
+
+        document.getElementById("star-2").onclick = function() {
+            value = 2;
+            publisher.publish(new Float32(value));
+            status_text.innerHTML = "/star_rating: Sent message " + value;
+        }
+
+        document.getElementById("star-3").onclick = function() {
+            value = 3;
+            publisher.publish(new Float32(value));
+            status_text.innerHTML = "/star_rating: Sent message " + value;
+        }
+
+        document.getElementById("star-4").onclick = function() {
+            value = 4;
+            publisher.publish(new Float32(value));
+            status_text.innerHTML = "/star_rating: Sent message " + value;
+        }
+
+        document.getElementById("star-5").onclick = function() {
+            value = 5;
+            publisher.publish(new Float32(value));
+            status_text.innerHTML = "/star_rating: Sent message " + value;
+        }
 
     </script>
 </body>
