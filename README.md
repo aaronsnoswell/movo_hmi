@@ -14,6 +14,13 @@ You have to install rosbridge_suite before using this.
 sudo apt-get install ros-<rosdistro>-rosbridge-server
 ```
 
+Then clone this repo to your catkin workspace `src` folder.
+
+```
+cd ~/movo_ws/src
+git clone https://github.com/aaronsnoswell/movo_hmi
+```
+
 ## Usage
 
 To run the ROSBridge server and gaze position publisher:
