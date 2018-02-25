@@ -22,7 +22,7 @@ To run the ROSBridge server and gaze position publisher:
 roslaunch movo_hmi movo_hmi
 ```
 
-By default this will open a ROSBridge websocket server at `ocalhost:9090`,
+By default this will open a ROSBridge websocket server at `localhost:9090`,
 which is what the html pages are set up to expect.
 
 You can then open `www/*.html` in a browser (no need for a web server, just
@@ -36,6 +36,6 @@ double click the files) to view the demos. Available demos;
 
  * [`star_rating.html`](blob/master/www/star_rating.html): Gives the user 5
    star-rating buttons to provide feedback on the robot's behaviour. Publishes
-   sts_msgs/Float32 to "/star_rating". You can check it is working by running
-   `rostopic echo /star_rating`. Intelligent robot learning and responses are
-   left as an excerise for the reader.
+   `sts_msgs/Float32` to "/star_rating". You can check it is working by
+   running `rostopic echo /star_rating`. Intelligent robot learning and
+   responses are left as an excerise for the reader.
