@@ -1,0 +1,81 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>MOVO HMI - Star Rating</title>
+    <meta name="description" content="A set of eyes for the MOVO robot">
+    <meta name="author" content="Aaron Snoswell">
+
+    <style type="text/css" >
+        body {
+          margin: 0px;
+          text-align: center;
+        }
+
+        #stars {
+          margin-left: auto;
+          margin-right: auto;
+          display: block;
+          background: none;
+        }
+
+        #stars button {
+            width: 150px;
+            font-size: 70pt;
+            padding-bottom: 10px;
+        }
+    </style>
+
+    <!-- Grab IE HTML5 Shim -->
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Grab ROSLibJS library -->
+    <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+</head>
+
+<body>
+    <h1>How did MOVO do?</h1>
+    <div id="stars">
+        <button id="star-1">&#9733;</button>
+        <button id="star-2">&#9733;</button>
+        <button id="star-3">&#9733;</button>
+        <button id="star-4">&#9733;</button>
+        <button id="star-5">&#9733;</button>
+    </div>
+    <p id="status"></p>
+
+    <!-- SVG Eye animation code below -->
+    <script type="text/javascript">
+
+        // ROSLibJS Code below
+        // See https://wiki.ros.org/roslibjs/Tutorials/BasicRosFunctionality for API
+
+        var status_text = document.getElementById("status");
+        status_text.innerHTML = "Not connected to ROSBridge server";
+
+        // Connect to a ROSBridgeJS server running on localhost
+        var serverURL = "ws://localhost:9090"
+        var ros = new ROSLIB.Ros({
+            url : serverURL
+        });
+        status_text.innerHTML = "Connecting to ROSBridge server...";
+
+        ros.on('connection', function() {
+            status_text.innerHTML = "Connected to ROSBridge server. Listening on /gaze_point";
+        });
+
+        ros.on('error', function(error) {
+            status_text.innerHTML = "Error connecting to ROSBridge server: " + error;
+        });
+
+        ros.on('close', function() {
+            status_text.innerHTML = "Connection to ROSBridge server closed.";
+        });
+
+    </script>
+</body>
+</html>

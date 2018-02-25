@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>movo_hmi</name>
+  <version>0.0.1</version>
+  <description>The movo_hmi package</description>
+  <maintainer email="aaron.snoswell@uqconnect.edu.au">aaron</maintainer>
+  <license>(C) 2018 The Robotics Design Lab, The University of Queensland</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>rospy</build_depend>
+
+  <build_export_depend>geometry_msgs</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>rospy</exec_depend>
+
+  <export>
+  </export>
+</package>

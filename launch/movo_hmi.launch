@@ -1,0 +1,12 @@
+<launch>
+
+  <!-- Launch file to test the movo hmi -->
+
+  <!-- Launch rosbridge -->
+  <include file="$(find movo_hmi)/launch/rosbridge.launch" />
+  
+  <!-- Launch gaze publisher -->
+  <node pkg="movo_hmi" type="gaze_publisher.py" name="gaze_publisher" output="screen" />
+
+</launch>
+
